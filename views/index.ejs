@@ -1,0 +1,66 @@
+<%-include('./assets/header')%>
+  <%-include('./assets/indexForm') %>
+    <div class="page">
+      <div class="containor">
+        <div class="form_btn">
+          <button id="createBtn">Create Project</button>
+        </div>
+        <div class="product">
+          <div class="prod-list">
+            <ul>
+              <% if(Issu.length===0){ %>
+                    Project not found
+                <%} else{%>
+              <% Issu.forEach((item,i)=>{%>
+                <li>
+                  <div class="add-more">
+                    <span>
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </span>
+                    <div class="uplist">
+                      <span>
+                        <a href="/update/<%=item._id%>">
+                          Update
+                        </a>
+                      </span>
+                      <span>
+                          <a href="/delete/<%=item._id%>">
+                            Delete
+                          </a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="pr-title">
+                    <h3>
+                      <%=item.title%>
+                    </h3>
+                  </div>
+
+                  <div class="author">
+                    <p>
+                     <span>Author: </span> <%=item.author%>
+                    </p>
+                  </div>
+
+                  <div class="desc">
+                    <p>
+                      <span>Description:</span> <%=item.description%>
+                    </p>
+                  </div>
+                  <div class="time-link">
+                    <span>
+                      <span>Date:</span><%=item.updatedAt%>
+                    </span>
+                    <span>
+                      <a href="/project/<%=item._id%>">see project</a>
+                    </span>
+                  </div>
+
+                </li>
+                <%})}%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%-include('./assets/footer')%>

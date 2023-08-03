@@ -1,0 +1,29 @@
+<%-include('./header') %>
+
+<div id="index-form" class="form-part updatePart">
+    <div class="form-containor">
+      <div class="form-header">
+        <h2>Update Project</h2>
+      </div>
+      <div class="form-inner">
+        <form action="api/update/issus" method="post">
+          <input type="hidden" name="id" value="<%=Issu._id%>" >
+          <div class="input_list">
+            <label for="title">Title</label> 
+            <input type="text" name="title" placeholder="<%=Issu.title%>" required>
+          </div>
+          <div class="input_list">
+            <label for="Author">Author</label>
+            <input type="text" name="author" placeholder="<%=Issu.author%>" required>
+          </div>
+          <div class="input_list">
+            <label for="Description">Description</label>
+            <textarea name="description" id="description" placeholder="<%=Issu.description%>" required></textarea>
+          </div>
+          <div class="input_list">
+            <input type="submit" value="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

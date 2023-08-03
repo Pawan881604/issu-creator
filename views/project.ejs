@@ -1,0 +1,102 @@
+<%-include('./assets/header')%>
+
+  <%-include('./assets/projectForm') %>
+    <div class="page">
+      <div class="containor">
+        <div class="project-flex">
+          <div class="project-n">
+            <div>
+              <ul>
+
+                <li><span> Title:</span>
+                  <%=Issu.title%>
+                </li>
+                <li><span> By: </span>
+                  <%=Issu.author%>
+                </li>
+                <li><span> Description: </span>
+                  <%=Issu.description%>
+                </li>
+                <li>
+                  <%=Issu.updatedAt%>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="form_btn">
+            <button id="createBtn">Create Project</button>
+          </div>
+        </div>
+        <%-include('./assets/projectSearch')%>
+        <%-include('./assets/filterFunction')%>
+        <div class="product">
+          <div class="prod-list">
+            <ul>
+              <%if(IssuProject.length===0){%>
+                <li>Not found any bug</li>
+                <%}%>
+                  <% IssuProject.forEach((item,i)=>{%>
+                    <li class="project-list">
+                      <div class="add-more">
+                        <span>
+                          <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </span>
+                        <div class="uplist">
+                          <span>
+                            <a href="/project/update/<%=item._id%>">
+                              Update
+                            </a>
+                          </span>
+                          <span>
+                            <a href="/project/delete/<%=item._id%>">
+                              Delete
+                            </a>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="pr-title">
+                        <h3 class="s-fun">
+                          <%=item.name%>
+                        </h3>
+                      </div>
+                    
+                      <div class="author">
+                        <p>
+                          <span> Author:</span>
+                          <%=item.author%>
+                        </p>
+                      </div>
+                    
+                      <div class="desc">
+                        <p>
+                          <span> Description:</span>
+                          <%=item.description%>
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <span> Label:</span>
+                          <span class="label">
+                            <%=item.labels%>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="time-link">
+                        <span>
+                          <span>Date:</span>
+                          <%=item.updatedAt%>
+                        </span>
+                      </div>
+                    </li>
+                    
+                    <%})%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <%-include('./assets/footer')%>
